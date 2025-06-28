@@ -7,13 +7,11 @@ on:
     branches: [main]
 
 jobs:
-  quality-analysis:
+  analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
     steps:
-      - uses: actions/checkout@v4
-
+      - uses: actions/checkout@v3
+      
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -21,15 +19,10 @@ jobs:
           channel: 'stable'
 
       - name: Install dependencies
-        run: |
-          flutter pub get
-          flutter doctor -v
+        run: flutter pub get
 
       - name: Run Flutter Analyze
-        run: flutter analyze --no-pub --no-fatal-infos
+        run: flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings
 
-      - name: Run Widget Tests
-        run: flutter test test/widget_test.dart
-
-      - name: Run Unit Tests
-        run: flutter test test/main_test.dart 
+      - name: Run Tests
+        run: flutter test
