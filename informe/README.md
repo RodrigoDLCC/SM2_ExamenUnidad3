@@ -7,6 +7,9 @@
 ## Repositorio
 https://github.com/RodrigoDLCC/SM2_ExamenUnidad3
 
+El informe se ubica en:
+https://github.com/RodrigoDLCC/SM2_ExamenUnidad3/tree/main/informe#readme
+
 ## Evidencias
 
 ### 1. Estructura de carpetas
@@ -20,7 +23,7 @@ https://github.com/RodrigoDLCC/SM2_ExamenUnidad3
 *Captura del archivo `quality-check.yml` completo*
 
 ### 3. Ejecución automática
-![Resultado en GitHub Actions](actions.png)  
+![Resultado en GitHub Actions](images/actions.png)  
 *Captura de la pestaña Actions mostrando ejecución exitosa*
 
 ## Explicación
@@ -73,11 +76,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Create empty .env file
+        run: touch .env
+
       - name: Run Flutter Analyze
         run: flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings
 
       - name: Run Tests
-        run: flutter test
+        run: flutter test --no-pub
 ```
 
 ### main_test.dart
@@ -112,5 +118,3 @@ El análisis estático encontró varios warnings que no afectan la funcionalidad
 
 Se configuró el workflow para que estos warnings no detengan la ejecución, 
 pero se corregirán en futuras actualizaciones según las mejores prácticas de Flutter.
-
-![Ejecución exitosa con warnings](actions.png)
