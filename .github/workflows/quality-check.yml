@@ -21,8 +21,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Create empty .env file
+        run: touch .env
+
       - name: Run Flutter Analyze
         run: flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings
 
       - name: Run Tests
-        run: flutter test
+        run: flutter test --no-pub
