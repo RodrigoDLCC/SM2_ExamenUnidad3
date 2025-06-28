@@ -16,7 +16,7 @@ https://github.com/RodrigoDLCC/SM2_ExamenUnidad3
 *Captura que muestra las carpetas `.github/workflows` y `test`*
 
 ### 2. Workflow implementado
-![Contenido del workflow](workflow.png)  
+![Contenido del workflow](images/workflow.png)  
 *Captura del archivo `quality-check.yml` completo*
 
 ### 3. Ejecución automática
@@ -32,7 +32,13 @@ https://github.com/RodrigoDLCC/SM2_ExamenUnidad3
 2. **Workflow**:
    - Creé `.github/workflows/quality-check.yml` con:
      - Análisis de código (`flutter analyze`)
+      ![Resultado en GitHub Actions](images/analyze.png)  
+
+
      - Pruebas unitarias (`flutter test`)
+
+
+     ![Resultado en GitHub Actions](images/main_test.png)  
    - Se ejecuta automáticamente en pushes y pull requests
 
 3. **Pruebas**:
