@@ -1,141 +1,95 @@
-\documentclass[12pt, a4paper]{article}
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{geometry}
-\usepackage{enumitem}
+# 📱 Aplicativo Móvil de Gestión de Tickets de Soporte - MDP
 
-% Configuración de página
-\geometry{margin=2.5cm}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
+Este proyecto corresponde al desarrollo de una solución tecnológica orientada a mejorar la gestión de solicitudes técnicas dentro de la **Municipalidad Distrital de Pocollay (MDP)**. Se trata de una aplicación móvil multiplataforma desarrollada con **Flutter** y respaldada por **Firebase**, enfocada en optimizar el registro, seguimiento y resolución de incidencias internas.
 
-% Estilo de tablas
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+---
 
-\begin{document}
+## 🎯 Objetivo General
 
-\begin{center}
-\Large\textbf{Informe del Examen Unidad III} \\
-\large\textbf{Automatización de calidad con GitHub Actions}
-\end{center}
+Diseñar e implementar un sistema móvil que permita gestionar de forma centralizada y eficiente los tickets de soporte técnico reportados por el personal de la MDP, asegurando mayor trazabilidad, rapidez en la atención y calidad del servicio.
 
-\section*{Datos del Estudiante}
-\begin{tabular}{ll}
-\textbf{Curso:} & Desarrollo de Aplicaciones Móviles \\
-\textbf{Fecha:} & \today \\
-\textbf{Nombre:} & [Nombre Completo del Estudiante] \\
-\textbf{Repositorio:} & \url{https://github.com/[usuario]/SM2_ExamenUnidad3} \\
-\end{tabular}
+---
 
-\section*{Evidencias del Proyecto}
+## ✅ Funcionalidades Principales
 
-\subsection*{1. Estructura de Carpetas}
-\begin{itemize}
-\item Se implementó la estructura requerida en el repositorio:
-\begin{itemize}
-\item \texttt{.github/workflows/} $\rightarrow$ Contiene \texttt{quality-check.yml}
-\item \texttt{test/} $\rightarrow$ Contiene \texttt{main\_test.dart} con pruebas unitarias
-\end{itemize}
-\end{itemize}
+- Autenticación de usuarios y administradores.
+- Registro de tickets por parte de los empleados municipales.
+- Seguimiento del estado de los tickets y notificaciones automáticas.
+- Panel administrativo para gestión, priorización y cierre de incidencias.
+- Generación de reportes y estadísticas de atención.
+- Exportación de tickets en PDF.
 
-\begin{center}
-\includegraphics[width=0.8\textwidth]{folder_structure.png}
-\captionof{figure}{Estructura de directorios del proyecto}
-\end{center}
+---
 
-\subsection*{2. Workflow de GitHub Actions}
-\begin{verbatim}
-name: Quality Check
+## 🧑‍💻 Tecnologías Utilizadas
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+| Componente        | Herramienta / Tecnología      |
+|-------------------|-------------------------------|
+| Framework         | Flutter (Dart)                |
+| Backend & Auth    | Firebase Authentication       |
+| Base de Datos     | Firebase Firestore (NoSQL)    |
+| Notificaciones    | Firebase Cloud Messaging      |
+| Control de versiones | Git + GitHub               |
+| IDE               | Android Studio / VS Code      |
 
-jobs:
-  analyze:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.19.0'
-      - name: Install dependencies
-        run: flutter pub get
-      - name: Analyze
-        run: flutter analyze
-      - name: Run tests
-        run: flutter test
-\end{verbatim}
+---
 
-\begin{center}
-\includegraphics[width=0.9\textwidth]{workflow_content.png}
-\captionof{figure}{Contenido del archivo quality-check.yml}
-\end{center}
+## 🧠 Arquitectura del Sistema
 
-\subsection*{3. Ejecución Automática}
-\begin{itemize}
-\item Workflow ejecutado automáticamente en push/pull request
-\item Resultados exitosos (100\% passed)
-\end{itemize}
+El sistema sigue un enfoque **cliente-servidor** con una arquitectura modular que favorece la escalabilidad y el mantenimiento. Entre sus principales componentes se incluyen:
 
-\begin{center}
-\includegraphics[width=0.9\textwidth]{actions_execution.png}
-\captionof{figure}{Ejecución exitosa en GitHub Actions}
-\end{center}
+- **Frontend:** Interfaz gráfica intuitiva y responsiva.
+- **Backend:** Gestión de lógica de negocio y validaciones.
+- **Base de Datos:** Almacenamiento estructurado en Firestore.
+- **Notificaciones:** Envío en tiempo real sobre el estado del ticket.
 
-\section*{Explicación de lo Realizado}
+---
 
-\begin{tabularx}{\textwidth}{lY}
-\toprule
-\textbf{Actividad} & \textbf{Descripción} \\
-\midrule
-Configuración del repositorio & 
-Creación del repositorio SM2\_ExamenUnidad3 y migración del proyecto móvil \\
-\midrule
-Implementación del workflow & 
-Configuración del archivo quality-check.yml en .github/workflows/ \\
-\midrule
-Pruebas unitarias & 
-Implementación de 3 pruebas en main\_test.dart \\
-\midrule
-Verificación automática & 
-Confirmación de ejecución correcta en GitHub Actions \\
-\bottomrule
-\end{tabularx}
+## 📌 Público Objetivo
 
-\section*{Pruebas Unitarias}
-\begin{verbatim}
-void main() {
-  test('Suma de 2 números', () {
-    expect(1 + 1, equals(2));
-  });
-  
-  test('Lista no vacía', () {
-    expect([1, 2, 3].isNotEmpty, isTrue);
-  });
-  
-  test('Comparación de strings', () {
-    expect('hello'.toUpperCase(), equals('HELLO'));
-  });
-}
-\end{verbatim}
+- **Usuarios Generales:** Empleados de la MDP que reportan incidencias.
+- **Administradores:** Personal del área de TI encargado de gestionar tickets, usuarios y estadísticas del sistema.
 
-\section*{Conclusiones}
-\begin{itemize}
-\item Implementación exitosa del flujo CI/CD con GitHub Actions
-\item Workflow automatizado garantiza calidad de código mediante:
-\begin{itemize}
-\item Análisis estático (\texttt{flutter analyze})
-\item Pruebas unitarias (\texttt{flutter test})
-\end{itemize}
-\item Cumplimiento de todos los requisitos del examen
-\end{itemize}
+---
 
-\end{document}
+## 📦 Alcance
+
+- Funciona en dispositivos móviles Android y navegadores web como PWA.
+- No contempla integración con sistemas externos en esta versión.
+- Enfoque inicial en soporte técnico interno de la municipalidad.
+
+---
+
+## 🔐 Seguridad
+
+- Acceso basado en roles (RBAC).
+- Validaciones en formularios.
+- Control de acceso mediante autenticación Firebase.
+- Cumplimiento con la Ley de Protección de Datos Personales (N.º 29733).
+
+---
+
+## 📊 Impacto Esperado
+
+- Reducción del tiempo promedio de atención en un 25%.
+- Incremento de eficiencia operativa en un 30%.
+- Mejora significativa en la trazabilidad y satisfacción de usuarios internos.
+
+---
+
+## 👥 Equipo de Desarrollo
+
+| Nombre                        | Rol                            |
+|------------------------------|---------------------------------|
+| Rodrigo Martin De La Cruz    | Jefe de Proyecto / Desarrollador |
+| Abraham Jesús Vela Vargas    | Programador / QA                |
+| Juan Jose Perez Vizcarra     | Integrador Firebase             |
+| Raúl Marcelo Cuadros Napa    | UI/UX Designer                  |
+| Marjiory Grace Llantay Machaca | QA Tester                     |
+| Cristian Aldair Quispe Levano| Documentación y Soporte         |
+
+---
+
+
+
+
